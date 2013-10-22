@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CreditizerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CreditizerModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="CreditizerModel.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Clients" EntityType="CreditizerModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Clients__Birthpl__1A14E395" Association="CreditizerModel.Store.FK__Clients__Birthpl__1A14E395">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="SOATO" />
+          </Key>
+          <Property Name="SOATO" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="OBL" Type="nvarchar" MaxLength="255" />
+          <Property Name="RAION" Type="nvarchar" MaxLength="255" />
+          <Property Name="SOVET" Type="nvarchar" MaxLength="255" />
+          <Property Name="TIP" Type="nvarchar" MaxLength="255" />
+          <Property Name="GNI" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATAV" Type="datetime" />
+          <Property Name="SOATON" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATEL" Type="nvarchar" MaxLength="255" />
+          <Property Name="MAL" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="MaidenName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="BirthplaceId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsClientResidentRB" Type="bit" Nullable="false" />
+          <Property Name="IsClientCitizenRB" Type="bit" Nullable="false" />
+          <Property Name="SeriesNumberIdentityDoc" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PersonalNumber" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="IssuedIdentityDoc" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="DateIssueIdentityDoc" Type="date" Nullable="false" />
+          <Property Name="ValidityIdentityDoc" Type="date" Nullable="false" />
+          <Property Name="SurnameLat" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="NameLat" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="255" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Clients__Birthpl__1A14E395">
+          <End Role="Cities" Type="CreditizerModel.Store.Cities" Multiplicity="1" />
+          <End Role="Clients" Type="CreditizerModel.Store.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="SOATO" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="BirthplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CreditizerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CreditizerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="CreditizerModel.City" />
+          <EntitySet Name="Clients" EntityType="CreditizerModel.Client" />
+          <AssociationSet Name="FK__Clients__Birthpl__1A14E395" Association="CreditizerModel.FK__Clients__Birthpl__1A14E395">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="SOATO" />
+          </Key>
+          <Property Name="SOATO" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="NAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="OBL" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="RAION" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SOVET" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="TIP" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="GNI" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DATAV" Type="DateTime" Precision="3" />
+          <Property Name="SOATON" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DATEL" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MAL" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Clients" Relationship="CreditizerModel.FK__Clients__Birthpl__1A14E395" FromRole="Cities" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MaidenName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="BirthplaceId" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IsClientResidentRB" Type="Boolean" Nullable="false" />
+          <Property Name="IsClientCitizenRB" Type="Boolean" Nullable="false" />
+          <Property Name="SeriesNumberIdentityDoc" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PersonalNumber" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IssuedIdentityDoc" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DateIssueIdentityDoc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValidityIdentityDoc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SurnameLat" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="NameLat" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MobilePhone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="CreditizerModel.FK__Clients__Birthpl__1A14E395" FromRole="Clients" ToRole="Cities" />
+        </EntityType>
+        <Association Name="FK__Clients__Birthpl__1A14E395">
+          <End Role="Cities" Type="CreditizerModel.City" Multiplicity="1" />
+          <End Role="Clients" Type="CreditizerModel.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="SOATO" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="BirthplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CreditizerModelStoreContainer" CdmEntityContainer="CreditizerEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="CreditizerModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="SOATO" ColumnName="SOATO" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="OBL" ColumnName="OBL" />
+                <ScalarProperty Name="RAION" ColumnName="RAION" />
+                <ScalarProperty Name="SOVET" ColumnName="SOVET" />
+                <ScalarProperty Name="TIP" ColumnName="TIP" />
+                <ScalarProperty Name="GNI" ColumnName="GNI" />
+                <ScalarProperty Name="DATAV" ColumnName="DATAV" />
+                <ScalarProperty Name="SOATON" ColumnName="SOATON" />
+                <ScalarProperty Name="DATEL" ColumnName="DATEL" />
+                <ScalarProperty Name="MAL" ColumnName="MAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CreditizerModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthplaceId" ColumnName="BirthplaceId" />
+                <ScalarProperty Name="IsClientResidentRB" ColumnName="IsClientResidentRB" />
+                <ScalarProperty Name="IsClientCitizenRB" ColumnName="IsClientCitizenRB" />
+                <ScalarProperty Name="SeriesNumberIdentityDoc" ColumnName="SeriesNumberIdentityDoc" />
+                <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+                <ScalarProperty Name="IssuedIdentityDoc" ColumnName="IssuedIdentityDoc" />
+                <ScalarProperty Name="DateIssueIdentityDoc" ColumnName="DateIssueIdentityDoc" />
+                <ScalarProperty Name="ValidityIdentityDoc" ColumnName="ValidityIdentityDoc" />
+                <ScalarProperty Name="SurnameLat" ColumnName="SurnameLat" />
+                <ScalarProperty Name="NameLat" ColumnName="NameLat" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
